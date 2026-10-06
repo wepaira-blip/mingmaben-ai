@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0d1117">
+  <meta name="description" content="Mingmaben AI — an open experiment in structural language decoding.">
+  <title>Mingmaben AI — Naked Language</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div class="eyebrow">AI PUBLIC BETA · TEXT V1.0</div>
+      <h1>明码本 <span>Mingmaben AI</span></h1>
+      <p class="lead">Naked Language — An open experiment in structural language decoding.</p>
+      <p class="cn">结构语言解译公开实验 · 免费参与 · 英文完整结果在前，中文完整结果在后</p>
+    </header>
+
+    <section class="panel input-panel">
+      <div class="section-head">
+        <div>
+          <h2>Text / 文本</h2>
+          <p>Paste one sentence, paragraph, or message for a single frozen analysis.</p>
+        </div>
+        <span class="pill">AI ENGINE</span>
+      </div>
+      <textarea id="source" rows="9" maxlength="12000" placeholder="Paste text here…\n在这里粘贴文本……"></textarea>
+      <div class="action-row">
+        <div class="view-switch" role="radiogroup" aria-label="result view">
+          <label><input type="radio" name="view" value="reading" checked> Reading</label>
+          <label><input type="radio" name="view" value="evidence"> Evidence / Deep</label>
+        </div>
+        <button id="analyze" class="primary">Analyze / 开始解译</button>
+      </div>
+      <p class="micro">One submission creates one canonical frozen result. Changing views never reruns the analysis.<br><span class="cn">一次提交只生成一个冻结核心结果；切换视图不会重新分析。</span></p>
+      <div id="error" class="error hidden" role="alert"></div>
+    </section>
+
+    <section id="results" class="results hidden" aria-live="polite">
+      <div class="result-top">
+        <div>
+          <div class="eyebrow">FROZEN CANONICAL READING</div>
+          <h2 id="frozen-id">Frozen ID / 冻结编号</h2>
+          <p id="metadata" class="mono"></p>
+        </div>
+        <button id="copy" class="secondary">Copy / 复制</button>
+      </div>
+
+      <article id="result-en" class="panel result-card" lang="en"></article>
+      <article id="result-zh" class="panel result-card" lang="zh-CN"></article>
+
+      <section id="evidence-panel" class="panel evidence hidden">
+        <div class="section-head"><h2>Evidence / 结构证据</h2><span class="pill">SAME FROZEN RESULT</span></div>
+        <div id="evidence-content"></div>
+      </section>
+
+      <section class="panel feedback">
+        <h2>How well did this reading fit? / 这次解译如何？</h2>
+        <div class="feedback-actions">
+          <button data-feedback="correct">Correct / 准</button>
+          <button data-feedback="partial">Partly / 部分准</button>
+          <button data-feedback="wrong">Wrong / 不准</button>
+        </div>
+        <p id="feedback-status" class="micro"></p>
+      </section>
+
+      <section id="support-card" class="panel support">
+        <div>
+          <div class="eyebrow">VOLUNTARY SUPPORT</div>
+          <h2>Support this independent experiment — $1</h2>
+          <p>Participation is free. Voluntary support helps cover AI model, hosting, testing, and continued development costs.</p>
+          <p class="cn">参与测试免费。您可自愿支持 1 美元，用于补贴 AI 模型调用、托管、测试及持续开发成本。</p>
+          <p class="micro">Support never changes the analysis and carries no promise of financial return.</p>
+        </div>
+        <a id="support-link" class="support-button hidden" href="#" rel="noopener noreferrer">Support $1 / 支持 $1</a>
+      </section>
+    </section>
+
+    <footer>
+      <p><strong>Independently developed and maintained by Li WenGuan.</strong><br>Independent developer research project · 独立开发者个人研究项目</p>
+      <p><a href="./about.html">About / 关于</a> · <a href="./privacy.html">Privacy / 隐私</a></p>
+    </footer>
+  </main>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

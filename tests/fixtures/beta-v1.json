@@ -1,0 +1,27 @@
+[
+  {
+    "id": "geometry-known-reality",
+    "text": "A triangle has three sides, and a square has four sides.",
+    "purpose": "Known-reality geometry statement; test whole-form synthesis without forcing truth confidence."
+  },
+  {
+    "id": "astronomy-known-reality",
+    "text": "The Earth goes around the Sun. The Moon goes around the Earth. These motions continue whether anyone is watching them or not.",
+    "purpose": "Known-reality nested orbital relations and observer-independence."
+  },
+  {
+    "id": "false-water-bottle",
+    "text": "There is a bottle of water on my desk, and I have drunk from it.",
+    "purpose": "Known-false existence/ownership fixture; initial reading must not be rewritten by later reality."
+  },
+  {
+    "id": "relationship-space-zh",
+    "text": "我的周围没有其他人。",
+    "purpose": "Chinese relationship-space fixture; distinguish relational reading from literal physical-space proof."
+  },
+  {
+    "id": "low-signal",
+    "text": "The lamp is on the table.",
+    "purpose": "Low-signal fixture; the model must be permitted to report no stable whole-form mechanism."
+  }
+]

@@ -1,0 +1,11 @@
+name = "mingmaben-ai-api"
+main = "src/index.js"
+compatibility_date = "2026-10-06"
+
+# Copy this file to wrangler.toml and replace only the non-secret database id.
+# OPENAI_API_KEY must be configured as a Cloudflare Worker secret, never here.
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mingmaben-ai"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
