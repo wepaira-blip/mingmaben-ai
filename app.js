@@ -24,6 +24,26 @@ export async function sendFeedback(fetchImpl,apiBase,frozenId,rating){
   return data;
 }
 
+export async function requestStats(fetchImpl,apiBase){
+  if(!apiBase || apiBase==='REPLACE_WITH_WORKER_URL') return {visitors:0,readings:0};
+  const response=await fetchImpl(`${apiBase.replace(/\/$/,'')}/api/stats`,{
+    method:'GET',
+    cache:'no-store'
+  });
+  if(!response.ok) throw new Error(`Stats request failed (${response.status}).`);
+  return response.json();
+}
+
+export async function registerVisit(fetchImpl,apiBase){
+  if(!apiBase || apiBase==='REPLACE_WITH_WORKER_URL') return {visitors:0,readings:0};
+  const response=await fetchImpl(`${apiBase.replace(/\/$/,'')}/api/visit`,{
+    method:'POST',
+    cache:'no-store'
+  });
+  if(!response.ok) throw new Error(`Visit request failed (${response.status}).`);
+  return response.json();
+}
+
 function escapeHtml(value=''){
   return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
 }
@@ -56,11 +76,37 @@ function init(){
   const analyzeBtn=$('#analyze');
   const apiKey=$('#api-key');
   const error=$('#error');
+  const visitorsEl=$('#visitor-count');
+  const readingsEl=$('#reading-count');
   let bundle=null;
 
   function setError(message=''){
     error.textContent=message;
     error.classList.toggle('hidden',!message);
+  }
+
+  function showStats(stats){
+    if(visitorsEl) visitorsEl.textContent=Number(stats?.visitors || 0).toLocaleString();
+    if(readingsEl) readingsEl.textContent=Number(stats?.readings || 0).toLocaleString();
+  }
+
+  async function refreshStats(){
+    try{ showStats(await requestStats(fetch,API_BASE_URL)); }catch{}
+  }
+
+  async function registerVisitorOnce(){
+    const key='mingmaben-ai-visitor-v1';
+    try{
+      if(localStorage.getItem(key)==='1'){
+        await refreshStats();
+        return;
+      }
+      const stats=await registerVisit(fetch,API_BASE_URL);
+      localStorage.setItem(key,'1');
+      showStats(stats);
+    }catch{
+      await refreshStats();
+    }
   }
 
   function applyView(){
@@ -88,7 +134,10 @@ function init(){
     if(!text){source.focus();return;}
     if(!key){setError('Enter your OpenAI API key for this request. / 请输入您自己的 OpenAI API Key。');apiKey.focus();return;}
     setError(''); analyzeBtn.disabled=true; analyzeBtn.textContent='Analyzing… / 解译中…';
-    try{ render(await requestAnalysis(fetch,API_BASE_URL,text,key)); }
+    try{
+      render(await requestAnalysis(fetch,API_BASE_URL,text,key));
+      await refreshStats();
+    }
     catch(e){ bundle=null; $('#results').classList.add('hidden'); setError(e.message || 'Temporary analysis error.'); }
     finally{ apiKey.value=''; analyzeBtn.disabled=false; analyzeBtn.textContent='Analyze / 开始解译'; }
   });
@@ -112,6 +161,9 @@ function init(){
 
   const support=$('#support-link');
   if(SUPPORT_URL){support.href=SUPPORT_URL;support.classList.remove('hidden');support.target='_blank';}
+
+  registerVisitorOnce();
+  setInterval(refreshStats,15000);
 }
 
 if(typeof document!=='undefined') init();

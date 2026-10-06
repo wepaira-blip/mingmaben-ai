@@ -15,6 +15,11 @@
       <h1>明码本 <span>Mingmaben AI</span></h1>
       <p class="lead">Naked Language — An open experiment in structural language decoding.</p>
       <p class="cn">结构语言解译公开实验 · 项目不收取使用费 · API费用由用户账户承担 · 英文完整结果在前，中文完整结果在后</p>
+      <p class="micro" aria-live="polite">
+        Visitors / 访问人数: <strong id="visitor-count">0</strong>
+        &nbsp;·&nbsp;
+        Readings / 解译次数: <strong id="reading-count">0</strong>
+      </p>
     </header>
 
     <section class="panel input-panel">
@@ -42,7 +47,6 @@
       <p class="micro">One submission creates one canonical frozen result. Changing views never reruns the analysis.<br><span class="cn">一次提交只生成一个冻结核心结果；切换视图不会重新分析。</span></p>
       <div id="error" class="error hidden" role="alert"></div>
     </section>
-
 
     <section id="support-card" class="panel support-transfer" aria-labelledby="support-title">
       <div class="eyebrow">VOLUNTARY SUPPORT · 个人自愿支持</div>
@@ -96,7 +100,6 @@
         </div>
         <p id="feedback-status" class="micro"></p>
       </section>
-
     </section>
 
     <footer>
