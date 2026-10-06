@@ -25,7 +25,8 @@
         </div>
         <span class="pill">AI ENGINE</span>
       </div>
-      <textarea id="source" rows="9" maxlength="12000" placeholder="Paste text here…\n在这里粘贴文本……"></textarea>
+      <textarea id="source" rows="9" maxlength="12000" placeholder="Paste text here…
+在这里粘贴文本……"></textarea>
       <div class="api-key-box">
         <label for="api-key"><strong>Your OpenAI API Key / 您自己的 OpenAI API Key</strong></label>
         <input id="api-key" type="password" autocomplete="off" autocapitalize="none" spellcheck="false" placeholder="Paste your OpenAI API key here / 在此粘贴 OpenAI API Key">
@@ -40,6 +41,32 @@
       </div>
       <p class="micro">One submission creates one canonical frozen result. Changing views never reruns the analysis.<br><span class="cn">一次提交只生成一个冻结核心结果；切换视图不会重新分析。</span></p>
       <div id="error" class="error hidden" role="alert"></div>
+    </section>
+
+
+    <section id="support-card" class="panel support-transfer" aria-labelledby="support-title">
+      <div class="eyebrow">VOLUNTARY SUPPORT · 个人自愿支持</div>
+      <h2 id="support-title">Support this independent experiment — suggested $1</h2>
+      <p>Mingmaben AI itself charges no access fee. If you find the experiment worthwhile, you may voluntarily support the independent developer by USD bank transfer. Support never changes the analysis.</p>
+      <p class="cn">明码本 AI 本身不收取使用费。如果您认为这项实验值得继续，可通过美元银行转账自愿支持独立开发者。建议金额为 1 美元；支持与否不会影响分析结果。</p>
+
+      <details class="bank-details">
+        <summary>View USD bank transfer details / 查看美元转账资料</summary>
+        <div class="bank-grid">
+          <div><span>Recipient / 收款人</span><strong>Li WenGuan</strong></div>
+          <div><span>Account type / 账户类型</span><strong>Checking</strong></div>
+          <div><span>Bank</span><strong>Community Federal Savings Bank</strong></div>
+          <div><span>Routing number (ACH &amp; Wire)</span><strong class="mono">026073150</strong></div>
+          <div><span>Account number / 账号</span><strong class="mono">8311726144</strong></div>
+          <div><span>SWIFT / BIC</span><strong class="mono">CMFGUS33</strong></div>
+          <div class="bank-wide"><span>Bank address / 银行地址</span><strong>89-16 Jamaica Ave, Woodhaven, NY 11421, United States</strong></div>
+        </div>
+        <p class="micro">U.S. senders may use a local ACH or wire transfer. Senders outside the United States would normally use SWIFT. International transfer fees can exceed $1, so please do not incur unreasonable fees just to support the project.</p>
+        <p class="micro cn">美国境内可使用 ACH 或 Wire；美国境外通常使用 SWIFT。国际转账手续费可能高于 1 美元，请不要为了支持本项目承担不合理的手续费。</p>
+      </details>
+
+      <p class="support-disclaimer">Personal voluntary support only. Not a charitable tax-deductible donation, investment, purchase, subscription, or promise of financial return.<br><span class="cn">仅为对独立开发者的个人自愿支持；并非慈善抵税捐赠、投资、购买或订阅，也不承诺任何经济回报。</span></p>
+      <a id="support-link" class="support-button hidden" href="#" rel="noopener noreferrer">Support $1 / 支持 $1</a>
     </section>
 
     <section id="results" class="results hidden" aria-live="polite">
@@ -70,16 +97,6 @@
         <p id="feedback-status" class="micro"></p>
       </section>
 
-      <section id="support-card" class="panel support">
-        <div>
-          <div class="eyebrow">VOLUNTARY SUPPORT</div>
-          <h2>Support this independent experiment — $1</h2>
-          <p>Mingmaben AI itself charges no access fee. OpenAI API usage is billed to your own account. Voluntary support helps cover hosting, testing, and continued development costs.</p>
-          <p class="cn">明码本 AI 本身不收取使用费；OpenAI API 调用费用由您自己的账户承担。您可自愿支持 1 美元，用于补贴托管、测试及持续开发成本。</p>
-          <p class="micro">Support never changes the analysis and carries no promise of financial return.</p>
-        </div>
-        <a id="support-link" class="support-button hidden" href="#" rel="noopener noreferrer">Support $1 / 支持 $1</a>
-      </section>
     </section>
 
     <footer>
